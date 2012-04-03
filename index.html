@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta http-equiv="imagetoolbar" content="false">
+  <title></title>
+
+  <style>
+
+  body,
+  html {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  body {
+    background: #ccc;
+    margin: 0;
+  }
+
+  textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0;
+    color: #222;
+    font-size: 18px;
+    font-family: monospace;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    white-space: pre;
+  }
+
+  span {
+    background: rgba(255, 255, 255, .7);
+    color: red;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  </style>
+
+</head>
+
+<body>
+
+  <textarea autofocus>Paste or type the values you would like to add
+together, seperated by space or line break. The value
+of the numbers is shown over on the right in red.
+
+Example:
+The value of adding 4 and 6 is shown over on the right.
+</textarea>
+
+  <span>
+  </span>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script>
+
+    var txt  = $('textarea'),
+        span = $('span'),
+        arr  = [];
+
+    txt.keyup(function(e) {
+
+        var reg  = /\n| /, // line breaks and spaces
+            out  = 0,
+            num;
+
+        function clean(a) {
+            return (a !== "");
+        }
+
+        arr = txt.val().split(reg);
+
+        for (var i = 0; i < arr.length; i++) {
+            num = parseFloat(arr[i]);
+            if (!isNaN(num)) {
+                out = out + num;
+            }
+        }
+
+        span.text(out);
+
+    });
+
+  </script>
+
+</body>
+</html>

@@ -78,13 +78,9 @@ The value of adding 4 and 6 is shown over on the right.
             out  = 0,
             num;
 
-        function clean(a) {
-            return (a !== "");
-        }
-
         arr = txt.val().split(reg);
 
-        for (var i = 0; i < arr.length; i++) {
+        for (var i = 0, l = arr.length; i < l; i++) {
             num = parseFloat(arr[i]);
             if (!isNaN(num)) {
                 out = out + num;
